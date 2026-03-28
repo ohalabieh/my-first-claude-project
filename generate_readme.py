@@ -179,6 +179,8 @@ def main():
 
     print(f"Fetching repository data from {repo_url}...")
     owner, repo = parse_github_url(repo_url)
+    meta = fetch_repo_metadata(owner, repo, token)
+    print(f"Description: {meta.get('description') or 'No description provided'}")
     context = collect_repo_context(owner, repo, token)
 
     print("Generating README with Claude...")
